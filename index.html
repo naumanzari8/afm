@@ -104,7 +104,6 @@
         </p>
         <a
           class="mt-10 px-9 py-3 bg-green-600 text-white text-lg rounded hover:bg-green-700 shadow-md hover:shadow-xl transition-shadow duration-300"
-          href="#products"
           href="https://wa.me/c/917796569924"
         >
           Catalogue
@@ -228,65 +227,57 @@
         </h2>
         <div class="flex flex-col md:flex-row">
           <div class="md:w-1/2 md:pr-8">
-            <form
-            action="https://formsubmit.co/zarinauman8@gmail.com" method="POST"
-            >
+            <form id="contact-form" action="https://formsubmit.co/zarinauman8@gmail.com" method="POST">
               <div class="mb-4">
-                <label class="block text-gray-700" for="name"> Name </label>
+                <label class="block text-gray-700" for="name">Name</label>
                 <input
                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
                   id="name"
-                  type="text" name="name" placeholder="Your name" required
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  required
                 />
               </div>
               <div class="mb-4">
-                <label class="block text-gray-700" for="email"> Email </label>
+                <label class="block text-gray-700" for="email">Email</label>
                 <input
                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
                   id="email"
-                  name="text"
                   type="email"
-                  placeholder="Your email" required
+                  name="email"
+                  placeholder="Your email"
+                  required
                 />
               </div>
               <div class="mb-4">
-                <label class="block text-gray-700" for="message">
-                  Message
-                </label>
+                <label class="block text-gray-700" for="message">Message</label>
                 <textarea
                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
                   id="message"
                   name="message"
                   rows="4"
-                  placeholder="Your message" required
+                  placeholder="Your message"
+                  required
                 ></textarea>
               </div>
+            
               <button
-                class="px-6 py-2 bg-blue-700 text-white rounded hover:bg-blue-900 shadow-md hover:shadow-xl transition-shadow duration-300"
                 type="submit"
+                class="flex items-center space-x-2 px-6 py-2 bg-blue-700 text-white rounded hover:bg-blue-900 shadow-md hover:shadow-xl transition-shadow duration-300"
               >
-                <!-- Send Message -->
-                <div class="block" id="mobile-menu">
-                  <a
-                    target="_blank"
-                    class="flex items-center space-x-2"
-                  >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-8"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M20 4H4C2.897 4 2 4.897 2 6v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 5.01-8-5.01V6h16zM4 18V8.489l7.445 4.653a1 1 0 001.11 0L20 8.489V18H4z"/>
-                  </svg>
-                    <span class="text-green-100 font-semibold "
-                      >Email Us</span
-                    >
-                  </a>
-                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4C2.897 4 2 4.897 2 6v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 5.01-8-5.01V6h16zM4 18V8.489l7.445 4.653a1 1 0 001.11 0L20 8.489V18H4z"/>
+                </svg>
+                <span class="text-green-100 font-semibold">Email Us</span>
               </button>
-              
+            
+              <!-- Thank You Message (initially hidden) -->
+              <p id="thank-you" class="mt-4 text-green-600 font-semibold hidden">
+                ✅ Thank you! Your message has been sent.
+              </p>
             </form>
+            
           </div>
           <div class="md:w-1/2 md:pl-8 mt-8 md:mt-0">
             <h3 class="text-xl font-bold text-gray-800">Get in Touch</h3>
@@ -361,6 +352,23 @@
             mobileMenu.classList.add("hidden");
           }
         });
+
+        const form = document.getElementById("contact-form");
+        const ackMessage = document.getElementById("thank-you");
+
+        form.addEventListener("submit", function () {
+          
+          // Optional: Clear the form fields
+          setTimeout(() => {
+            // Show acknowledgement message
+            ackMessage.classList.remove("hidden");
+            form.reset();
+          }, 900);
+
+          // Let FormSubmit handle the redirect naturally (because we’re not calling preventDefault)
+        });
+
+
     </script>
   </body>
 </html>
